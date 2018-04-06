@@ -2,11 +2,15 @@ const p = new Person('John Doe', 45, 'Male');
 const pf = facade(p);
 
 // Without facade: all properties are accessible
+console.log(p);
 p.getName();
 p.getAge();
 p.getSex();
 
+console.log('- - - - - - - - - -');
+
 // With facade: only selected properties are accessible
+console.log(pf);
 pf.age(p);
 pf.sex(p);
 

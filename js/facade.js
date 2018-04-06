@@ -21,15 +21,15 @@ function Person(name, age, sex) {
 
   this.getName = () => {
     console.log(this.name);
-  }
+  };
 
   this.getAge = () => {
     console.log(this.age);
-  }
+  };
 
   this.getSex = () => {
     console.log(this.sex);
-  }
+  };
 }
 
 function facade(o) {

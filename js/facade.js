@@ -1,16 +1,17 @@
-const p = new Person('John Doe', 45, 'Male');
-const pf = facade(p);
+// ==================================================
+// A facade provides a new interface to an object.
+// ==================================================
 
-// Without facade: all properties are accessible
-console.log(p);
+// 1. Limits access to an object's properties
+const p = new Person('John Doe', 45, 'Male');
+const pf = personFacade(p);
+
 p.getName();
 p.getAge();
 p.getSex();
 
-console.log('- - - - - - - - - -');
+console.log('------------------------------');
 
-// With facade: only selected properties are accessible
-console.log(pf);
 pf.age(p);
 pf.sex(p);
 
@@ -20,25 +21,55 @@ function Person(name, age, sex) {
   this.sex = sex;
 
   this.getName = () => {
-    console.log(this.name);
+    console.log('Name: ' + this.name);
   };
 
   this.getAge = () => {
-    console.log(this.age);
+    console.log('Age: ' + this.age);
   };
 
   this.getSex = () => {
-    console.log(this.sex);
+    console.log('Sex: ' + this.sex);
   };
 }
 
-function facade(o) {
+function personFacade(o) {
   return {
     age: (o) => {
       return o.getAge();
     },
     sex: (o) => {
       return o.getSex();
+    }
+  };
+}
+
+// Wraps functions that are commonly called together
+const e = new Employee('Steve Smith', 5677389210090);
+const fe = employeeFacade(e);
+
+console.log('------------------------------');
+
+fe.getNameAndId();
+
+function Employee(name, id) {
+  this.name = name;
+  this.id = id;
+
+  this.getName = () => {
+    console.log('Name: ' + this.name);
+  };
+
+  this.getId = () => {
+    console.log('ID: ' + this.id);
+  };
+}
+
+function employeeFacade(o) {
+  return {
+    getNameAndId: () => {
+      o.getName();
+      o.getId();
     }
   };
 }

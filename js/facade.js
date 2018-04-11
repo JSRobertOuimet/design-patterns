@@ -44,7 +44,7 @@ function personFacade(o) {
   };
 }
 
-// Wraps functions that are commonly called together
+// 2. Wraps functions that are commonly called together
 const e = new Employee('Steve Smith', 5677389210090);
 const fe = employeeFacade(e);
 

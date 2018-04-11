@@ -48,11 +48,28 @@ console.log('------------------------------');
 // With a factory function
 const proto = {
   pens: [],
-  createPen(type, color, price) {
+
+  create(type, color, price) {
     let id = this.pens.length === 0 ? 1 : this.pens.length + 1;
     
     this.pens.push({ id, type, color, price });
     console.log(`A ${color} ${type} (id: ${id}), priced $${price}, was created.`);
+  },
+
+  get(id) {
+    this.pens.forEach(pen => {
+      if(id === pen.id) {
+        console.log(pen);
+      }
+    });
+  },
+
+  del(id) {
+    this.pens.forEach((pen, i) => {
+      if(id === pen.id) {
+        this.pens.splice(i, 1);
+      }
+    });
   }
 };
 
@@ -62,6 +79,12 @@ function penFactory() {
 
 const pf = penFactory();
 
-pf.createPen('pen', 'red', '2.75');
-pf.createPen('highlighter', 'green', '0.99');
-pf.createPen('pencil', 'blue', '1.25');
+pf.create('pen', 'red', 2.75);
+pf.create('highlighter', 'green', 0.99);
+pf.create('pencil', 'blue', 1.25);
+
+pf.del(1);
+
+console.log(JSON.stringify(pf.pens, null, 2));
+
+pf.get(3);

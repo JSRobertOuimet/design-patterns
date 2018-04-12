@@ -1,7 +1,7 @@
-// ==================================================
-// The module (reveal) design pattern encapsulates
-// protects private methods and returns public ones
-// ==================================================
+// ========================================
+// The module design pattern protects
+// private methods & returns public ones
+// ========================================
 
 (glob => {
 

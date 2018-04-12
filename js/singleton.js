@@ -15,7 +15,7 @@
       };
   
       function someMethod() {
-        console.log('I have been instantiated.');
+        return;
       }
     }
   
@@ -38,7 +38,7 @@
       if(!instance) {
         instance = {
           someMethod: () => {
-            console.log('I have been instantiated.');
+            return;
           }
         };
       }
